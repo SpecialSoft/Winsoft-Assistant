@@ -101,13 +101,25 @@ namespace Winsoft_Assistant
         {
             UpdateRecordButtonImage();
         }
+        private void pictureBox1_Hover(object sender, EventArgs e)
+        {
+            if (mustRecord)
+                RecordMic.Image = Image.FromFile("C:/Users/Arnyminer Z/Pictures/orangeLoading/no_mic.png");
+        }
+        private void pictureBox1_Leave(object sender, EventArgs e)
+        {
+            if (mustRecord)
+                RecordMic.Image = Image.FromFile("C:/Users/Arnyminer Z/Pictures/orangeLoading/mic.png");
+        }
         private void UpdateRecordButtonImage()
         {
             mustRecord = !mustRecord;
             if(mustRecord)
-                pictureBox1.Image = Image.FromFile("C:/Users/Arnyminer Z/Pictures/orangeLoading/mic.svg");
+                RecordMic.Image = Image.FromFile("C:/Users/Arnyminer Z/Pictures/orangeLoading/mic.png");
             else
-                pictureBox1.Image = Image.FromFile("C:/Users/Arnyminer Z/Pictures/orangeLoading/no_mic.svg");
+                RecordMic.Image = Image.FromFile("C:/Users/Arnyminer Z/Pictures/orangeLoading/mic_off.png");
+            
+            RecordMic.BringToFront();
         }
 
 

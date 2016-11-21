@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.RecordMic = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.Loader = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RecordMic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Loader)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
-            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.RecordMic);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(200, 37);
@@ -50,14 +50,17 @@
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
             this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseUp);
             // 
-            // pictureBox1
+            // RecordMic
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(3, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(35, 35);
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.RecordMic.Location = new System.Drawing.Point(3, 2);
+            this.RecordMic.Name = "RecordMic";
+            this.RecordMic.Size = new System.Drawing.Size(35, 35);
+            this.RecordMic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.RecordMic.TabIndex = 4;
+            this.RecordMic.TabStop = false;
+            this.RecordMic.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.RecordMic.MouseHover += new System.EventHandler(this.pictureBox1_Hover);
+            this.RecordMic.MouseLeave += new System.EventHandler(this.pictureBox1_Leave);
             // 
             // label1
             // 
@@ -113,7 +116,7 @@
             this.Name = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RecordMic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Loader)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -126,7 +129,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox Loader;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox RecordMic;
     }
 }
 
