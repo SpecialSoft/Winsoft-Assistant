@@ -4,12 +4,14 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Speech.Recognition;
 
 namespace Winsoft_Assistant
 {
@@ -18,13 +20,15 @@ namespace Winsoft_Assistant
         Timer timer;
         int animationCounter = 0;
 
+        SpeechRecognitionEngine _Recognition = new SpeechRecognitionEngine();
+
         public Form1()
         {
             InitializeComponent();
+            
             timer = new Timer();
             timer.Interval = 2;
             timer.Tick += new EventHandler(animationLoaderTimer);
-            timer.Start();
         }
         private void animationLoaderTimer(object sender, EventArgs args)
         {
@@ -39,6 +43,8 @@ namespace Winsoft_Assistant
         {
             panel1.Location = new Point(0, 0);
             panel1.Width = Width;
+
+            timer.Start();
 
             UpdateRecordButtonImage();
         }
@@ -72,7 +78,6 @@ namespace Winsoft_Assistant
         #region Move Form
         //Global variables;
         private bool _dragging = false;
-        private Point _offset;
         private Point _start_point = new Point(0, 0);
         
         private void panel1_MouseDown(object sender, MouseEventArgs e)
@@ -96,6 +101,7 @@ namespace Winsoft_Assistant
         }
         #endregion
 
+        #region Speech reconigzer
         bool mustRecord = true;
         private void pictureBox1_Click(object sender, EventArgs e)
         {
@@ -118,12 +124,29 @@ namespace Winsoft_Assistant
                 RecordMic.Image = Image.FromFile("C:/Users/Arnyminer Z/Pictures/orangeLoading/mic.png");
             else
                 RecordMic.Image = Image.FromFile("C:/Users/Arnyminer Z/Pictures/orangeLoading/mic_off.png");
-            
+
+            if (mustRecord)
+            {
+                _Recognition.SetInputToDefaultAudioDevice();
+                _Recognition.LoadGrammar(new DictationGrammar());
+                _Recognition.SpeechRecognized += _Recognition_SpeechRecognized;
+                _Recognition.RecognizeAsync(RecognizeMode.Multiple);
+            }
+
             RecordMic.BringToFront();
         }
+        void _Recognition_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
+        {
+            string result = e.Result.Text;
+            foreach (RecognizedWordUnit word in e.Result.Words){ }
+            ai(result);
+        }
+        #endregion
 
+        public void ai(string text)
+        {
 
-
+        }
 
         public class Utility
         {
